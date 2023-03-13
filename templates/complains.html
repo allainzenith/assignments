@@ -1,0 +1,100 @@
+
+{% extends 'base.html' %}
+{% block title%}{{ title | upper}}{% endblock %}
+{% block content %}
+
+	<br><br>
+	<div class="back">
+	<button onclick="back('{{ user }}');">Back to Home</button>
+	</div>
+		<center>
+		<h1>
+		Here are the complaints, {{user | upper}} <br>
+		</h1>
+		</center>
+		<center>
+		<table class="table">
+			<tr>
+			{% for h in header %}
+				<th>{{ h }}</th>
+			{% endfor%}
+		</tr>
+			{% for emp in content%}
+		<tr>
+		{% for key,value in emp.items() %}
+		<td>
+				<center>
+				{{ value  }}
+				</center>
+		</td>
+			{% endfor %}
+			<td>
+				<center>
+				<button onclick="document.getElementById('modal').style.display='block';"> View  &#x24D8;</button>
+				<button onclick="validate_form()"> Delete  &#x1F5D1;</button
+				</center>
+			</td>
+		</tr>
+		{% endfor %}
+		</table>
+		</center>
+	<div class="w3-modal" id="modal">	
+		<div class="w3-modal-content w3-animate-top" style="width:30%; height:65%;">
+			<div class="w3-container" style="background-color:#25a5b0;">
+				<center><h3 style="color:white;">View and Update Complaints</h3></center>
+				<button class="w3-button w3-display-topright" onclick="document.getElementById('modal').style.display='none'">&times;</button>
+			</div>
+			<div class="w3-container" style="text-indent:20px;">
+				<form>
+					<p>
+					
+						<center>
+						<label class="reglabel" style="font-size: 21px; text-align:left;"><b>Complainant: </b></label>
+						<label class="reglabel"style="font-size: 21px;  text-align:left;">Ethan Lee </label>
+						<label class="reglabel"style="font-size: 21px; text-align:right; margin-left: 20px;"><b>Accused: </b></label>
+						<label class="reglabel"style="font-size: 21px; text-align:right;">Jay Park </label>	
+						</center>
+						<hr>
+						<p style="text-indent:10px; text-align:justify; margin-left:10px; margin-right:10px;">
+						1: Lorem ipsum dolor sit amet. Hic consequatur dolore non beatae 
+						voluptas et recusandae beatae est quam culpa. Ea error fugit ex minus 
+						cumque qui odio nobis et iste quas.
+						</p>	
+						<p style="text-indent:10px; text-align:justify; margin-left:10px; margin-right:10px;">
+						2: Lorem ipsum dolor sit amet. Hic consequatur dolore non beatae 
+						voluptas et recusandae beatae est quam culpa. Ea error fugit ex minus 
+						cumque qui odio nobis et iste quas.
+						</p>
+						<label class="reglabel" style="margin-left:10px;">Add a reply to this thread:</label><br>	
+						<input type="text" style="margin-left:10px; margin-right:10px; width:95%; height:100px;">
+						
+					<br><br>
+					<center>
+					<input type="button" value="SAVE"  class="w3-button w3-blue w3-center" style="padding: 10px 40px 10px 40px;">
+					<button type="button" onclick="close_modal()" class="w3-button w3-blue w3-center" style="padding: 10px 25px 10px 25px;">CANCEL</button>
+					</center>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+	function back(user){
+	location.href="/main?user="+user
+	}
+	function validate_form(){
+		 
+		alert("Complaint successfully deleted");    
+		return true;
+			
+	}
+	function close_modal()
+				{
+					document.getElementById('modal').style.display='none';
+				
+				}
+	</script>
+		
+{% endblock %}
+
+
+

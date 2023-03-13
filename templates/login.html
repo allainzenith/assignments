@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>{% block title%}{{ title 	}}{% endblock %}</title>
+
+
+  <link rel="stylesheet" href={{url_for("static", filename="css/Style.css")}} type="text/css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body>
+
+  <div class="wrap">
+	<form action="/login" method="post">
+	  <div class="logologin">
+      <img src={{url_for("static", filename="images/logo.png")}}>
+		</div>
+		<input type="text" placeholder="username" required name="username" id="username">
+		<div class="bar">
+			<i></i>
+		</div>
+		<input type="password" placeholder="password" required name="password" id="password">
+		<input type="submit" value="Log in" class="submitbutton">
+		</form>
+		<center>
+		<button onclick="register()">No account? Sign up here</button>
+		</center>
+	</div>
+	
+	
+	
+	<div class="w3-modal" id="registermodal">	
+		<div class="w3-modal-content w3-animate-top" style="width:30%;">
+			<div class="w3-container" style="background-color:#25a5b0;">
+				<center><h3 style="color:white;">Register Account</h3></center>
+				<button class="w3-button w3-display-topright" onclick="document.getElementById('registermodal').style.display='none'">&times;</button>
+			</div>
+			<div class="w3-container" style="text-indent:20px;">
+				<form action="/register" method="post">
+					<p>
+						<label class="reglabel"><b>First Name </b></label>
+						<input type="text" placeholder="First Name" required name="fname" id="fname" style="float:right; margin-right:25%;">
+					</p>
+						<p>
+						<label class="reglabel"><b>Last Name </b></label>
+						<input type="text" placeholder="Last Name" required name="lname" id="lname" style="float:right; margin-right:25%;">
+					</p>
+
+					<p>
+						<label class="reglabel"><b>Phone </b></label>
+						<input type="text" placeholder="Contact Number" required name="phone" id="phone" style="float:right; margin-right:25%;">
+					</p>
+					<p>
+						<label class="reglabel"><b>E-mail </b></label>
+						<input type="text" placeholder="Email Address" required name="email" id="email" style="float:right; margin-right:25%;">
+					</p>
+					<p>
+						<label class="reglabel"><b>Username </b></label>
+						<input type="text" placeholder="Username" required name="username" id="username" style="float:right; margin-right:25%;">
+					</p>
+					<p>
+						<label class="reglabel"><b>Password </b></label>
+						<input type="password" placeholder="Password" required name="password" id="password" style="float:right; margin-right:25%;">
+					</p>
+						<input type="submit" value="Register" class="w3-button w3-blue w3-right">
+					<br><br>
+				</form>
+			</div>
+		</div>
+	</div>
+  <script>
+	
+	function register(){
+		document.getElementById('registermodal').style.display='block';
+	}
+	function validate_form(){
+		 
+		alert("Account successfully registered");    
+		document.getElementById('registermodal').style.display='none';
+			
+	}
+  </script>
+
+</body>
+
+</html>

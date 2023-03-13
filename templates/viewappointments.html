@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% block title%}{{ title | upper}}{% endblock %}
+{% block content %}
+	<br><br>
+		<div class="back">
+	<button onclick="back('{{ user }}');">Back to Home</button>
+	</div>
+	<center>
+			<h1>
+		Hi, {{user | upper}} <br>
+		Select Account Type
+	</h1>
+	<br><br>
+	</center>
+	<div class="main">
+	<center>
+	
+		<button onclick="viewappclient('{{ user }}')">Clients</button>
+		<button onclick="viewappprof('{{ user }}')">Technician</button>
+	</center>
+	</div>
+	<script>
+	function back(user){
+	location.href="/main?user="+user
+	}
+	function viewappclient(user){
+	location.href="/viewappclient?user="+user
+}
+function viewappprof(user){
+	location.href="/viewappprof?user="+user
+}
+	</script>
+	
+{% endblock %}
+
+
+

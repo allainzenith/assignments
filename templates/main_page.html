@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% block title%}{{ title | upper}}{% endblock %}
+{% block content %}
+	<br><br>
+	<div class="main">
+	<center>
+	<h1>
+		Hi, {{user | upper}} <br>
+		What do you want to do today?
+	</h1>
+	<br><br>
+		<button onclick="complains('{{ user }}');"><img src={{url_for("static", filename="images/x.svg")}}> <br> View <br> Complains</button>
+		<button onclick="verifyapplications('{{ user }}')"> <img src={{url_for("static", filename="images/application.svg")}}> <br> Verify<br>Applications</button>
+		<button onclick="manageaccounts('{{ user }}')"> <img src={{url_for("static", filename="images/user.svg")}}> <br> Manage<br>Accounts</button>
+		<button onclick="viewappointments('{{ user }}')"> <img src={{url_for("static", filename="images/appointment.svg")}}> <br>View<br>Appointments</button>
+
+	</center>
+	</div>
+	
+	<br><br>
+	<script>
+function complains(user){
+	location.href="/complains?user="+user
+}
+function verifyapplications(user){
+	location.href="/verifyapplications?user="+user
+}
+function manageaccounts(user){
+	location.href="/manageaccounts?user="+user
+}
+function viewappointments(user){
+	location.href="/viewappointments?user="+user
+}
+	</script>
+		
+{% endblock %}
+
+
+

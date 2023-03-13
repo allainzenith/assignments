@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% block title%}{{ title | upper}}{% endblock %}
+{% block content %}
+	<br><br>
+	<div class="back">
+	<button onclick="back('{{ user }}');">Back to Home</button>
+	</div>
+	
+	<center>
+			<h1>
+		Hi, {{user | upper}} <br>
+		Select Account Type
+	</h1>
+	<br><br>
+	</center>
+	<div class="main">
+	<center>
+	
+		<button onclick="manageaccountclient('{{ user }}')">Clients</button>
+		<button onclick="manageaccountprof('{{ user }}')">Technicians</button>
+	</center>
+	</div>
+	<script>
+	function back(user){
+	location.href="/main?user="+user
+	}
+ function manageaccountclient(user){
+	location.href="/manageaccountclient?user="+user
+}
+function manageaccountprof(user){
+	location.href="/manageaccountprof?user="+user
+}
+	</script>
+
+{% endblock %}
+
+
+

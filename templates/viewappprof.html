@@ -1,0 +1,105 @@
+
+{% extends 'base.html' %}
+{% block title%}{{ title | upper}}{% endblock %}
+{% block content %}
+	<br><br>
+		<div class="back">
+	<button onclick="back('{{ user }}');">Back to Home</button>
+	</div>
+	<center>
+		<h1>
+		Take a look of the status of the professional appointments,  {{user | upper}} <br>
+		</h1>
+		</center>
+		<center>
+		<table class="table">
+			<tr>
+			{% for h in header %}
+				<th>{{ h }}</th>
+			{% endfor%}
+		</tr>
+			{% for emp in content%}
+		<tr>
+		{% for key,value in emp.items() %}
+		<td>
+				<center>
+				{{ value  }}
+				</center>
+		</td>
+			{% endfor %}
+			<td>
+				<center>
+				<button onclick="document.getElementById('modal').style.display='block';"> View  &#x24D8;</button>
+			
+				</center>
+			</td>
+		</tr>
+		{% endfor %}
+		</table>
+		</center>
+			<div class="w3-modal" id="modal">	
+		<div class="w3-modal-content w3-animate-top" style="width:30%; height:80%;">
+			<div class="w3-container" style="background-color:#25a5b0;">
+				<center><h3 style="color:white;">Personal Information</h3></center>
+				<button class="w3-button w3-display-topright" onclick="document.getElementById('complainsmodal').style.display='none'">&times;</button>
+			</div>
+			<div class="w3-container" style="text-indent:20px;">
+				<form>
+					<p>
+						<label class="reglabel"style="font-size: 21px;margin-left: 20px;"><b>Technician Information</b></label>	<br><hr>
+						<label class="reglabel"style="font-size: 21px;margin-left: 20px;"><b>Name:</b></label>	
+						<label class="reglabel"style="font-size: 21px;">Jay Park</label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Contact Number:</b></label>	
+						<label class="reglabel"style="font-size: 21px; ">09123456789</label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>E-mail:</b></label>	
+						<label class="reglabel"style="font-size: 21px;">jpark@gmail.com</label>	<br>
+						<label class="reglabel"style="font-size: 21px;margin-left: 20px;"><b>Specialization</b></label>	
+						<label class="reglabel"style="font-size: 21px;"><b>Plumbing</b></label>	<br>
+						<hr>
+						<label class="reglabel" style="font-size: 21px;  margin-left: 20px;"><b>Client Information </b></label><br><hr>
+						<label class="reglabel" style="font-size: 21px;  margin-left: 20px;"><b>Name: </b></label>
+						<label class="reglabel"style="font-size: 21px;">Ethan Lee </label><br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Contact Number: </b></label>
+						<label class="reglabel"style="font-size: 21px;">09324447890</label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>E-mail: </b></label>
+						<label class="reglabel"style="font-size: 21px;">ethanlee@gmail.com </label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Payment method:  </b></label>	
+						<label class="reglabel"style="font-size: 21px;">Credit Card - Visa</label>	<br>
+					
+						
+					
+						<div>
+							<label class="reglabel"style="font-size: 21px;"><b>Appointment Status</b></label>	<br>
+							<label class="reglabel"style="font-size: 26px; color: red;margin-left: 20px;"><b>ONGOING</b></label>	<br>
+					
+						
+						</div>
+								<hr>
+						
+					
+					<center>
+					<button type="button" onclick="close_modal()" class="w3-button w3-blue w3-center" style="padding: 10px 40px 10px 40px;">Go Back</button>
+					</center>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+	function back(user){
+	location.href="/main?user="+user
+	}
+	function view(){
+	
+	}
+	function close_modal()
+				{
+					document.getElementById('modal').style.display='none';
+				
+				}
+	</script>
+
+
+{% endblock %}
+
+
+

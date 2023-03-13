@@ -1,0 +1,102 @@
+
+{% extends 'base.html' %}
+{% block title%}{{ title | upper}}{% endblock %}
+{% block content %}
+	<br><br>
+		<div class="back">
+	<button onclick="back('{{ user }}');">Back to Home</button>
+	</div>
+	<center>
+		<h1>
+		Here's what you have to verify, {{user | upper}} <br>
+		</h1>
+		</center>
+		<center>
+		<table class="table">
+			<tr>
+			{% for h in header %}
+				<th>{{ h }}</th>
+			{% endfor%}
+		</tr>
+			{% for emp in content%}
+		<tr>
+		{% for key,value in emp.items() %}
+		<td>
+				<center>
+				{{ value  }}
+				</center>
+		</td>
+			{% endfor %}
+			<td>
+				<center>
+				<button onclick="document.getElementById('modal').style.display='block';"> View  &#x24D8;</button>
+				<button onclick="validate_form()"> Delete  &#x1F5D1;</button
+				</center>
+			</td>
+		</tr>
+		{% endfor %}
+		</table>
+		</center>
+			<div class="w3-modal" id="modal">	
+		<div class="w3-modal-content w3-animate-top" style="width:30%; height:70%;">
+			<div class="w3-container" style="background-color:#25a5b0;">
+				<center><h3 style="color:white;">Personal Information</h3></center>
+				<button class="w3-button w3-display-topright" onclick="document.getElementById('modal').style.display='none'">&times;</button>
+			</div>
+			<div class="w3-container" style="text-indent:20px;">
+				<form>
+					<p>
+					
+						<br><br>
+						<label class="reglabel" style="font-size: 21px;  margin-left: 20px;"><b>Email: </b></label>
+						<label class="reglabel"style="font-size: 21px;">jpark@gmail.com </label><br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Password: </b></label>
+						<label class="reglabel"style="font-size: 21px;">****** </label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Name: </b></label>
+						<label class="reglabel"style="font-size: 21px;">Jay Park </label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Address: </b></label>	
+						<label class="reglabel"style="font-size: 21px;">36 Franc St., Bahay Toro Philippines</label>	<br>
+						<label class="reglabel"style="font-size: 21px;margin-left: 20px;"><b>Contact Number:</b></label>	
+						<label class="reglabel"style="font-size: 21px;">09123456789</label>	<br>
+						<label class="reglabel"style="font-size: 21px; margin-left: 20px;"><b>Specialization:</b></label>	
+						<label class="reglabel"style="font-size: 21px;">Plumbing</label>	<br>
+						<label class="reglabel"style="font-size: 21px;margin-left: 20px;"><b>Proof of Expertise:</b></label>	<br>
+					
+						<div>
+							<img src={{url_for("static",filename="images/pdf.svg")}} style="width:7%;">
+							<label class="reglabel"style="font-size: 21px;">PARK_credentials.pdf</label><br>
+						</div>
+								<hr>
+						
+					<br><br>
+					<center>
+					<label class="reglabel"style="font-size: 21px;">Confirm User's Registration?</label><br>
+					<input type="button" value="YES"  class="w3-button w3-blue w3-center" style="padding: 10px 40px 10px 40px;">
+					<button type="button" onclick="close_modal()" class="w3-button w3-blue w3-center" style="padding: 10px 40px 10px 40px;">NO</button>
+					</center>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+	function back(user){
+	location.href="/main?user="+user
+	}
+function validate_form(){
+		 
+		alert("Application successfully deleted");    
+		return true;
+			
+	}
+	function close_modal()
+				{
+					document.getElementById('modal').style.display='none';
+				
+				}
+	</script>
+
+
+{% endblock %}
+
+
+
